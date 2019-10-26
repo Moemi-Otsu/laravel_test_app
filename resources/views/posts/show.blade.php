@@ -7,6 +7,10 @@
 
       <p class="mb-5">{!! nl2br(e($post->body)) !!}</p>
 
+      <div class="mb-4 text-right">
+        <a class="btn btn-primary" href="{{ route('posts.edit', ['post' => $post]) }}">編集する</a>
+      </div>
+
       <!-- コメント投稿 -->
       <form class="mb-4" method="POST" action="{{ route('comments.store') }}">
         @csrf
