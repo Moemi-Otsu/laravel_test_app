@@ -11,6 +11,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->delete();//追加
+
         $names = [
             'taro' => '太郎',
             'jiro' => '二郎',

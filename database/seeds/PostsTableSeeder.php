@@ -13,11 +13,15 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('posts')->delete();
+
+        $user = App\User::first();//追加
+
         factory(Post::class, 50)
-            ->create()
+            ->create(['user_id' => $user->id,])//変更
             ->each(function ($post) {
                 $comments = factory(App\Comment::class, 2)->make();
-                $post->comments()->saveMany($comments);    
+                $post->comments()->saveMany($comments);
             });
     }
 }

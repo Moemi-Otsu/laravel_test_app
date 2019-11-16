@@ -9,6 +9,8 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'title' => '投稿のタイトル',
         'body' => "本文です。テキストテキストテキスト。テキストテキストテキスト。テキストテキストテキスト。テキストテキストテキスト。\nテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト。",
-        'user_id' => rand(1, 9)
+        'user_id' => function () {
+            return factory(App\User::class)->create()->id;//追加
+        },
     ];
 });
